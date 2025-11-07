@@ -4,7 +4,7 @@
 }
 
 .dashboard-nav {
-  background: #667eea;
+  background: #ff8c3a;
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -66,7 +66,8 @@
 }
 
 .sidebar button:hover {
-  background: #f0f0f0;
+  background:  #ff8c3a;
+;
 }
 
 .main-content {
@@ -76,6 +77,7 @@
 
 .charts-section {
   margin: 2rem 0;
+  
 }
 
 .chart-container {
@@ -104,10 +106,17 @@
 }
 
 .stat-card {
-  background: white;
+  background: #ffffff;
+  border-radius: 12px;
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff8c3a;
 }
 
 .stat-card h3 {
@@ -117,12 +126,12 @@
   font-weight: 500;
 }
 
-.stat-number {
+/* .stat-number {
   margin: 0;
   font-size: 2rem;
   font-weight: bold;
-  color: #667eea;
-}
+  color: #ff8c3a;
+} */
 
 .recent-appointments {
   background: white;
@@ -162,8 +171,8 @@ table th {
 }
 
 .status.scheduled {
-  background: #e3f2fd;
-  color: #1976d2;
+  background: #f1ede3;
+  color: #fbbf24;
 }
 
 .status.completed {
@@ -185,7 +194,7 @@ table th {
 }
 
 .welcome-message h3 {
-  color: #667eea;
+  color: #ff8c3a;
   margin-bottom: 1rem;
 }
 

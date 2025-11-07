@@ -97,18 +97,24 @@ const Dashboard = () => {
                   <h3>Overview Statistics</h3>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={[
-                      { name: 'Patients', value: stats.totalPatients },
-                      { name: 'Doctors', value: stats.totalDoctors },
-                      { name: 'Appointments', value: stats.totalAppointments },
-                      { name: 'Today', value: stats.todayAppointments }
-                    ]}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="value" fill="#4f46e5" />
-                    </BarChart>
+  { name: 'Patients', value: stats.totalPatients },
+  { name: 'Doctors', value: stats.totalDoctors },
+  { name: 'Appointments', value: stats.totalAppointments },
+  { name: 'Today', value: stats.todayAppointments }
+]}>
+  <CartesianGrid strokeDasharray="3 3" />
+  <XAxis dataKey="name" />
+  <YAxis />
+  <Tooltip />
+  <Legend />
+  <Bar dataKey="value">
+    <Cell fill="#4f46e5" />  {/* Patients */}
+    <Cell fill="#10b981" />  {/* Doctors */}
+    <Cell fill="#f59e0b" />  {/* Appointments */}
+    <Cell fill="#ef4444" />  {/* Today */}
+  </Bar>
+</BarChart>
+
                   </ResponsiveContainer>
                 </div>
                 
@@ -117,23 +123,26 @@ const Dashboard = () => {
                   <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
                       <Pie
-                        data={[
-                          { name: 'Scheduled', value: stats.scheduledAppointments || 0 },
-                          { name: 'Completed', value: stats.completedAppointments || 0 },
-                          { name: 'Cancelled', value: stats.cancelledAppointments || 0 }
-                        ]}
-                        cx="50%"
-                        cy="50%"
-                        labelLine={false}
-                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                        outerRadius={80}
-                        fill="#8884d8"
-                        dataKey="value"
-                      >
-                        <Cell fill="#4f46e5" />
-                        <Cell fill="#10b981" />
-                        <Cell fill="#ef4444" />
-                      </Pie>
+  data={[
+    { name: 'Scheduled', value: stats.scheduledAppointments || 0 },
+    { name: 'Completed', value: stats.completedAppointments || 0 },
+    { name: 'Cancelled', value: stats.cancelledAppointments || 0 }
+  ]}
+  cx="50%"
+  cy="50%"
+  labelLine={false}
+  label={({ name, percent }) => (
+    <text fill="#333" textAnchor="middle" fontSize={12}>
+      {`${name}: ${(percent * 100).toFixed(0)}%`}
+    </text>
+  )}
+  outerRadius={80}
+  dataKey="value"
+>
+  <Cell fill="#fbbf24" />  {/* Scheduled - yellow */}
+  <Cell fill="#10b981" />  {/* Completed - green */}
+  <Cell fill="#ef4444" />  {/* Cancelled - red */}
+</Pie>
                       <Tooltip />
                       <Legend />
                     </PieChart>

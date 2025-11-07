@@ -33,7 +33,7 @@
 
 .back-btn {
   padding: 0.5rem 1rem;
-  background: #667eea;
+  background: #ff8c3a;
   color: white;
   border: none;
   border-radius: 5px;
@@ -42,7 +42,7 @@
 }
 
 .back-btn:hover {
-  background: #5568d3;
+  background: #ff8c3a
 }
 
 .list-actions {
@@ -64,7 +64,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #ff8c3a;
 }
 
 .table-container {
@@ -166,7 +166,7 @@ table tbody tr:hover {
 }
 
 .modal-buttons button[type="submit"] {
-  background-color: #007bff;
+  background-color: #ff8c3a;
   color: white;
 }
 
