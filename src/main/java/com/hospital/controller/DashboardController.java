@@ -41,7 +41,9 @@ public class DashboardController {
         Long todayAppointments = (long) appointmentRepository.findByAppointmentDateBetween(startOfDay, endOfDay).size();
         
         Long pendingAppointments = (long) appointmentRepository.findByStatus("SCHEDULED").size();
-
+                 Long scheduledAppointments = (long) appointmentRepository.findByStatus("SCHEDULED").size();
+        Long completedAppointments = (long) appointmentRepository.findByStatus("COMPLETED").size();
+        Long cancelledAppointments = (long) appointmentRepository.findByStatus("CANCELLED").size();
         List<Map<String, Object>> recentAppointments = appointmentRepository.findAll().stream()
                 .sorted((a1, a2) -> a2.getCreatedAt().compareTo(a1.getCreatedAt()))
                 .limit(5)
@@ -66,7 +68,11 @@ public class DashboardController {
                 todayAppointments,
                 pendingAppointments,
                 recentAppointments,
-                appointmentsByDay
+                    new ArrayList<>(),  // appointmentsByDay
+
+                scheduledAppointments,
+                completedAppointments,
+                cancelledAppointments
         );
 
         return ResponseEntity.ok(stats);

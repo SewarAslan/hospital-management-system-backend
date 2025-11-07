@@ -20,7 +20,7 @@ build/
 *.local
 
 *.db
-data/
+# data/     
 uploads/
 
 .DS_Store

@@ -17,4 +17,7 @@ public class DashboardStats {
     private Long pendingAppointments;
     private List<Map<String, Object>> recentAppointments;
     private List<Map<String, Object>> appointmentsByDay;
+    private Long scheduledAppointments;
+    private Long completedAppointments;
+    private Long cancelledAppointments;
 }

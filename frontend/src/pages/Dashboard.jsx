@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   const loadStats = async () => {
     try {
-      const response = await axios.get('/dashboard/stats');
+     const response = await axios.get('/dashboard/stats');
       setStats(response.data);
     } catch (error) {
       console.error('Error loading stats:', error);
@@ -89,6 +89,55 @@ const Dashboard = () => {
                 <div className="stat-card">
                   <h3>Today's Appointments</h3>
                   <p className="stat-number">{stats.todayAppointments}</p>
+                </div>
+              </div>
+
+              <div className="charts-section">
+                <div className="chart-container">
+                  <h3>Overview Statistics</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={[
+                      { name: 'Patients', value: stats.totalPatients },
+                      { name: 'Doctors', value: stats.totalDoctors },
+                      { name: 'Appointments', value: stats.totalAppointments },
+                      { name: 'Today', value: stats.todayAppointments }
+                    ]}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="value" fill="#4f46e5" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                
+                <div className="chart-container">
+                  <h3>Appointment Status Distribution</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                      <Pie
+                        data={[
+                          { name: 'Scheduled', value: stats.scheduledAppointments || 0 },
+                          { name: 'Completed', value: stats.completedAppointments || 0 },
+                          { name: 'Cancelled', value: stats.cancelledAppointments || 0 }
+                        ]}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                      >
+                        <Cell fill="#4f46e5" />
+                        <Cell fill="#10b981" />
+                        <Cell fill="#ef4444" />
+                      </Pie>
+                      <Tooltip />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
               </div>
 
