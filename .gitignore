@@ -19,7 +19,7 @@ build/
 .vite/
 *.local
 
-*.db
+# *.db
 # data/     
 uploads/
 
