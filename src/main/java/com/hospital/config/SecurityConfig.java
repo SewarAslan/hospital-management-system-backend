@@ -56,15 +56,13 @@ private JwtRequestFilter jwtRequestFilter;
         return http.build();
     }
 
-    @Bean
+   @Bean
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-
     configuration.setAllowedOrigins(Arrays.asList(
-        "https://hospital-management-system-lmv9b0izk-sewar-aslans-projects.vercel.app",
+        "https://hospital-management-system-silk-six.vercel.app",
         "http://localhost:5173"
     ));
-
     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     configuration.setAllowedHeaders(Arrays.asList("*"));
     configuration.setAllowCredentials(true);
@@ -73,5 +71,6 @@ public CorsConfigurationSource corsConfigurationSource() {
     source.registerCorsConfiguration("/**", configuration);
     return source;
 }
+
 
 }
