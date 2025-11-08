@@ -57,7 +57,6 @@ private JwtRequestFilter jwtRequestFilter;
     }
 
     @Bean
-   @Bean
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
 
